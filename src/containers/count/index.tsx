@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppState, AppStore } from "../../store";
-import { getCount, increment, decrement, reset } from "../../slices/count.slice";
+import { AppState, AppStore } from "../../redux/store";
+import { getCount, increment, decrement, reset } from "../../redux/slices/count.slice";
 
 function CountContainer() {
   const dispatch = useDispatch<AppStore>();

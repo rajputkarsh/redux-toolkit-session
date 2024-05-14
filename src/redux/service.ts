@@ -17,7 +17,6 @@ export type FetchDataResponse = {
 };
 
 const axios = Axios.create({
-  withCredentials: true,
   responseType: "json",
 });
 
@@ -33,10 +32,15 @@ export const fetchData = ({
     method: method,
     ...(method !== "GET" ? data : {}),
     ...(timeout ? { timeout } : {}),
+    headers: {
+      "content-type": "application/json",
+    },
   };
 
   if (headers) {
-    requestConfig["headers"] = headers;
+    requestConfig["headers"] = {
+      ...headers,
+    };
   }
 
   requestConfig["headers"] = {
@@ -70,7 +74,7 @@ export const fetchData = ({
       .catch((error: any) => {
         if (error.code === "ERR_NETWORK") {
           // frontend offline or backend not working
-          alert("Please contact customer care");
+          alert("Something went wrong");
         } else if (error?.response?.status === 401) {
           alert(`Authorization failed`);
         } else {

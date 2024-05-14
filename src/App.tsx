@@ -6,6 +6,8 @@ function App() {
   return (
     <>
       <CountContainer />
+      <br />
+      <br />
       <ApiContainer />
     </>
   );
