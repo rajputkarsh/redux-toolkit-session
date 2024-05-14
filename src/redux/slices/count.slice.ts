@@ -39,6 +39,8 @@ export const countSlice = createSlice({
 // Function to select count slice root state
 const selectCountRootState = (state: AppState): ICountSlice => state.count;
 
+export const {increment, decrement, reset} = countSlice.actions;
+
 export const getCount = createSelector<
   [(state: AppState) => ICountSlice],
   number
