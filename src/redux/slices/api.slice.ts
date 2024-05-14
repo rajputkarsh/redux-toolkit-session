@@ -129,4 +129,11 @@ export const getUsers = createSelector<
   Array<{ [key: string]: any }>
 >([selectApiRootState], (apiState) => apiState["data"]);
 
+export const getUserById = (id: string) => (
+  createSelector<
+    [(state: AppState) => IApiSlice],
+    { [key: string]: any }
+  >([selectApiRootState], (apiState) => apiState["data"].find((user) => user?.id == id) || {}) 
+)
+
 export default apiSlice.reducer;
