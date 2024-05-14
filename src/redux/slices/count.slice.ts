@@ -19,7 +19,20 @@ const initialData: ICountSlice = {
 export const countSlice = createSlice({
   name: "count",
   initialState: initialData,
-  reducers: {},
+  reducers: {
+    increment: (state: ICountSlice) => ({
+      ...state,
+      data: state.data + 1,
+    }),
+    decrement: (state: ICountSlice) => ({
+      ...state,
+      data: state.data - 1,
+    }),
+    reset: (state: ICountSlice) => ({
+      ...state,
+      data: 0,
+    }),
+  },
   extraReducers: () => {},
 });
 
